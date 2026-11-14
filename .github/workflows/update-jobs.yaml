@@ -36,5 +36,6 @@ jobs:
           git add data/jobs.json
           if ! git diff --cached --quiet; then
             git commit -m "Update OSU job listings"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
