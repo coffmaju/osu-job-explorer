@@ -1,6 +1,7 @@
 
 import json
 from pathlib import Path
+from datetime import datetime, timezone
 
 import requests
 
@@ -60,7 +61,10 @@ for job in jobs:
 output = Path("data/jobs.json")
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(
-    json.dumps(results, indent=2, ensure_ascii=False),
+    json.dumps({
+        "lastUpdated": datetime.now(timezone.utc).isoformat(),
+        "jobs": results
+    }, indent=2, ensure_ascii=False),
     encoding="utf-8",
 )
 
