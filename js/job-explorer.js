@@ -23,14 +23,21 @@ function daysAgo(posted) {
 // Load job data from our local JSON file.
 async function loadJobs() {
   try {
-    const response = await fetch("data/jobs.json");
+    const response = await fetch("data/jobs.json", {
+      cache: "no-store"
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    allJobs = await response.json();
-
+    const data = await response.json();
+    
+    allJobs = data.jobs;
+    
+    document.querySelector("#last-updated").textContent =
+      "Last updated: " +
+      new Date(data.lastUpdated).toLocaleString();
     // Newest postings first.
     allJobs.sort(
       (a, b) => daysAgo(a.posted) - daysAgo(b.posted)
