@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OSU Job Explorer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jobs.js" defer></script>
+</head>
+<body>
+  <h1>OSU Job Explorer</h1>
+  <p>Oregon State University job listings,
+     organized by posting date.</p>
+
+  <div class="panel">
+    <input id="search"
+           type="search"
+           placeholder="Search job titles...">
+    <table>
+      <thead>
+        <tr>
+          <th>Job Title</th>
+          <th>Posted</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody id="jobs"></tbody>
+    </table>
+  </div>
+</body>
+</html>
