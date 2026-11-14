@@ -64,7 +64,10 @@ function renderJobs() {
     const titleCell = document.createElement("td");
     if (job.url) {
       const link = document.createElement("a");
-      link.href = job.url;
+      link.href = job.url.replace(
+          ".com/job/",
+          ".com/OSU_Careers_Site/job/"
+        );
       link.textContent = job.title;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
